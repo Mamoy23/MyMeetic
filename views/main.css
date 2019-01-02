@@ -1,0 +1,54 @@
+body{
+    font-family: 'Thasadith', sans-serif;
+    color: rgb(73, 73, 73);
+}
+.linear-gradient{
+    background: linear-gradient(to bottom, #994a96, #e74f64, #f07e37);
+}
+#logo{
+    width: 40px;
+}
+.block-background{
+    background-color: rgba(255, 255, 255, 0.801);
+    padding: 5px 20px;
+}
+h1{
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px;
+}
+h2{
+    font-size: 25px;
+    margin: 10px 20px;
+}
+.submit-button{
+    border-radius: 30px;
+    padding: 8px 25px;
+    background: linear-gradient(to right, #994a96, #e74f64, #f07e37);
+}
+.select{
+    margin: 5px 20px;
+}
+.sub-select{
+    border: none;
+    border-radius: 5px;
+    padding: 2px 5px;
+    background-color: rgba(255, 255, 255, 0.664);
+}
+.sub-select:focus{
+    outline: none;
+}
+.input{
+    border: none;
+    border-bottom: solid 1px #994a96;
+    background: transparent;
+    margin-bottom: 10px;
+}
+.input:focus{
+    outline: none;
+}
+::placeholder{
+    color: rgb(59, 59, 59);
+}
+#update_form{
+    display: none;
+}
