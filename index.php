@@ -1,5 +1,6 @@
 <?php
 session_start();
+setlocale(LC_ALL, 'fr_FR.UTF8');
 
 include("controllers/controller.php");
 include("models/model.php");
@@ -20,6 +21,9 @@ else {
             break;
         case "logout":
             $yo->logout();
+            break;
+        case "delete":
+            $yo->deleteMember();
             break;
     }
 }

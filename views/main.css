@@ -20,10 +20,15 @@ h2{
     font-size: 25px;
     margin: 10px 20px;
 }
+h3{
+    font-size: 20px;
+}
 .submit-button{
     border-radius: 30px;
     padding: 8px 25px;
+    margin: 10px 0px;
     background: linear-gradient(to right, #994a96, #e74f64, #f07e37);
+    width: 100%;
 }
 .select{
     margin: 5px 20px;
@@ -42,6 +47,7 @@ h2{
     border-bottom: solid 1px #994a96;
     background: transparent;
     margin-bottom: 10px;
+    width: 100%;
 }
 .input:focus{
     outline: none;
@@ -49,6 +55,6 @@ h2{
 ::placeholder{
     color: rgb(59, 59, 59);
 }
-#update_form{
+#update_form, #update_id_form{
     display: none;
 }

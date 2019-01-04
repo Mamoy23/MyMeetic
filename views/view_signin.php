@@ -19,7 +19,7 @@
     <div class="m-4 rounded block-background">
         <h2 class="text-center">Rejoignez nous, c'est gratuit !</h2>
 
-        <form action="?page=signin" method="POST" class="d-flex flex-column justify-content-center">
+        <form action="?page=signin" method="POST" class="text-center">
     
             <input type="text" name="name" placeholder="Nom" class="input">
             <input type="text" name="firstname" placeholder="Prénom" class="input">
@@ -52,7 +52,7 @@
 
             <p class="m-0">Genre :</p>
             <div class="d-flex align-items-baseline select">
-                <input type="radio" id="man" name="gender" value="homme" class="m-2 sub-select">
+                <input type="radio" id="man" name="gender" value="homme" class="m-2">
                 <label for="man">Homme</label> 
                 <input type="radio" id="woman" name="gender" value="femme" class="m-2">
                 <label for="woman">Femme</label>
@@ -71,20 +71,20 @@
             <p class="alert alert-light m-3"><?= $error_msg?><p>
             <?php endif; ?>
 
-            <button type="submit" class="submit-button text-white border-0 m-3 font-weight-bold">Valider</button>
+            <button type="submit" class="submit-button text-white border-0 font-weight-bold">Valider</button>
         </form>
     </div>
 
     <div class="m-4 rounded block-background">
         <h2 class="text-center">Content de vous revoir !</h2>
 
-       <form action="?page=login" method="POST" class="d-flex flex-column justify-content-center">
+       <form action="?page=login" method="POST" class="text-center">
             <input type="email" name="co_email" placeholder="Email" class="input">
             <input type="password" name="co_password" placeholder="Mot de passe" class="input">
             <?php if(isset($error_msg2)): ?>
             <p class="alert alert-light m-3"><?= $error_msg2?></p>
             <?php endif; ?>
-            <button type="submit" class="submit-button text-white border-0 m-3 font-weight-bold">Se connecter</button>
+            <button type="submit" class="submit-button text-white border-0 font-weight-bold">Se connecter</button>
        </form>
     </div>
 

@@ -15,7 +15,7 @@
         }
 
         public function addMember(){
-            $add_member = "INSERT INTO membres(nom, prenom, pseudo, date_naissance, sexe, ville, email, mdp) VALUES(:nom, :prenom, :pseudo, :date_naissance, :sexe, :ville, :email, :mdp)";
+            $add_member = "INSERT INTO membres(nom, prenom, pseudo, date_naissance, sexe, ville, email, mdp, statut) VALUES(:nom, :prenom, :pseudo, :date_naissance, :sexe, :ville, :email, :mdp, 1)";
             $stmt = $this->bdd->prepare($add_member);
             $stmt->bindValue('nom', $_POST['name'], PDO::PARAM_STR);
             $stmt->bindValue('prenom', $_POST['firstname'], PDO::PARAM_STR);
@@ -29,35 +29,49 @@
             return $stmt->errorCode();
         }
 
-        public function coMember(){
-            $co_member = "SELECT * FROM membres WHERE email = :email";
+        public function coMember($email){
+            $co_member = "SELECT * FROM membres WHERE email = :email AND statut = 1";
             $stmt = $this->bdd->prepare($co_member);
-            $stmt->bindValue('email', $_POST['co_email'], PDO::PARAM_STR);
+            $stmt->bindValue('email', $email, PDO::PARAM_STR);
             $stmt->execute();
             $co = $stmt->fetch(PDO::FETCH_ASSOC);
             return $co;
         }
 
         public function infoMember(){
-            $info_member = "SELECT * from membres WHERE email = :email";
+            $info_member = "SELECT * from membres WHERE id_membre = :session AND statut = 1";
             $stmt = $this->bdd->prepare($info_member);
-            $stmt->bindValue('email', $_SESSION['email'], PDO::PARAM_STR);
+            $stmt->bindValue('session', $_SESSION['id_membre'], PDO::PARAM_STR);
             $stmt->execute();
             $infos = $stmt->fetch(PDO::FETCH_ASSOC);
             return $infos;
         }
 
         public function editInfo(){
-            $edit_info = "UPDATE membres SET nom = :nom, prenom = :prenom, pseudo = :pseudo, date_naissance = :date, ville = :ville, email = :email, mdp = :mdp WHERE email = :session";
+            $edit_info = "UPDATE membres SET nom = :nom, prenom = :prenom, pseudo = :pseudo, date_naissance = :date, ville = :ville, email = :email WHERE id_membre = :session AND statut = 1";
             $stmt = $this->bdd->prepare($edit_info);
             $stmt->bindValue('nom', $_POST['edit_name'], PDO::PARAM_STR);
             $stmt->bindValue('prenom', $_POST['edit_firstname'], PDO::PARAM_STR);
             $stmt->bindValue('pseudo', $_POST['edit_pseudo'], PDO::PARAM_STR);
-            $stmt->bindValue('date', $_POST['edit_date_naissance'], PDO::PARAM_STR);
+            $stmt->bindValue('date', $_POST['edit_birthyear']."-".$_POST['edit_birthmonth']."-".$_POST['edit_birthday'], PDO::PARAM_STR);
             $stmt->bindValue('ville', $_POST['edit_city'], PDO::PARAM_STR);
             $stmt->bindValue('email', $_POST['edit_email'], PDO::PARAM_STR );
-            $stmt->bindValue('mdp', password_hash($_POST['edit_password'], PASSWORD_DEFAULT), PDO::PARAM_STR);
-            $stmt->bindValue('session', $_SESSION['email'], PDO::PARAM_STR);
+            $stmt->bindValue('session', $_SESSION['id_membre'], PDO::PARAM_STR);
+            $stmt->execute();
+        }
+
+        public function editPassword(){
+            $edit_password = "UPDATE membres SET mdp = :mdp WHERE id_membre= :session AND statut = 1";
+            $stmt = $this->bdd->prepare($edit_password);
+            $stmt->bindValue('mdp', password_hash($_POST['new_password2'], PASSWORD_DEFAULT), PDO::PARAM_STR);
+            $stmt->bindValue('session', $_SESSION['id_membre'], PDO::PARAM_STR);
+            $stmt->execute();
+        }
+
+        public function deleteMember(){
+            $delete_member = "UPDATE membres SET statut = 0 WHERE id_membre = :session AND statut = 1";
+            $stmt = $this->bdd->prepare($delete_member);
+            $stmt->bindValue('session', $_SESSION['id_membre'], PDO::PARAM_STR);
             $stmt->execute();
         }
     }

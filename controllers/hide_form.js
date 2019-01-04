@@ -4,11 +4,8 @@ $(document).ready(function(){
     });
 });
 
-/*function myFunction() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }*/
+$(document).ready(function(){
+  $("#update_id_button").click(function(){
+      $("#update_id_form").toggle();
+  });
+});
