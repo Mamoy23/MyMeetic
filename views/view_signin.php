@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Marine's meetic</title>
+    <title>TrueLove</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="views/main.css">
@@ -11,9 +11,11 @@
 </head>
 
 <body class="linear-gradient">
-    <header class="d-flex justify-content-center align-items-center">
-        <img src="heart.png" id="logo">
-        <h1 class="text-white m-2">TrueLove</h1>
+    <header>
+        <h1 class="text-white text-center m-2">TrueLove</h1>
+        <div class="text-center">
+            <img src="heart.png" id="logo">
+        </div>
     </header>
 
     <div class="m-4 rounded block-background">

@@ -19,6 +19,9 @@ else {
         case "profil":
             $yo->profil();
             break;
+        case "meetic":
+            $yo->meetic();
+            break;
         case "logout":
             $yo->logout();
             break;

@@ -75,3 +75,47 @@
             $stmt->execute();
         }
     }
+
+    class Meetic{
+
+        private $bdd;
+
+        public function __construct(){
+            try
+            {
+            $this->bdd = new PDO('mysql:host=localhost;dbname=my_meetic;host=127.0.0.1;charset=utf8', 'root', 'root');
+            } catch (Exception $e) {
+            var_dump($e);
+            }
+        }
+        
+        public function getLoc(){
+           $stmt = $this->bdd->prepare("SELECT ville FROM membres");
+           $stmt->execute();
+           $city_tab = $stmt->fetchAll(PDO::FETCH_COLUMN);
+           return $city_tab;
+        }
+
+        public function searchLoveby3(){
+            $search = "SELECT * FROM membres WHERE ville =:ville AND sexe =:genre AND TIMESTAMPDIFF(YEAR, date_naissance, '2019-01-01')";
+            if(($_POST['age']) == "18/25"){
+                $search .= " BETWEEN 18 AND 25";
+            }
+            if(($_POST['age']) === "25/35"){
+                $search .= " BETWEEN 25 AND 35";
+            }
+            if(($_POST['age']) === "35/45"){
+                $search .= " BETWEEN 35 AND 45";
+            }
+            if(($_POST['age']) === "45+"){
+                $search .= " >= 45 ";
+            }
+            
+            $stmt = $this->bdd->prepare($search);
+            $stmt->bindValue('ville', $_POST['city'], PDO::PARAM_STR);
+            $stmt->bindValue('genre', $_POST['genre'], PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }

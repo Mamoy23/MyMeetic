@@ -12,13 +12,14 @@
 </head>
 <body class="linear-gradient">
     <header>
+        <img src="menu.png" id="menu" alt="menu">
+        <?php include("view_menu.html")?>
+        <h1 class="text-white text-center m-2">Bienvenue <?= $infos['pseudo']?> !</h1>
+            <div class="text-center">
+                <img src="heart.png" id="logo">
+            </div>
+    </header>
         
-        </header>
-        
-        <div class="d-flex justify-content-center align-items-center">
-            <img src="heart.png" id="logo">
-            <h1 class="text-white text-center m-2">Bienvenue <?= $infos['pseudo']?> !</h1>
-        </div>
         
         <div class="m-4 rounded block-background text-center">
             <h2>Mon profil</h2>
@@ -84,7 +85,7 @@
             <p class="alert alert-light m-3"><?= $error_msg4?><p>
                 <?php endif; ?>
             </div>
-            <script src="controllers/hide_form.js"></script>
+            <script src="controllers/hide_element.js"></script>
             <script src="controllers/delete_member.js"></script>
-        </body>
-        </html>
+</body>
+</html>

@@ -5,8 +5,9 @@ body{
 .linear-gradient{
     background: linear-gradient(to bottom, #994a96, #e74f64, #f07e37);
 }
-#logo{
+#logo, #menu{
     width: 40px;
+    margin: 0px 10px;
 }
 .block-background{
     background-color: rgba(255, 255, 255, 0.801);
@@ -57,4 +58,27 @@ h3{
 }
 #update_form, #update_id_form{
     display: none;
+}
+#menu{
+    margin: 10px 20px;
+}
+#navmenu{
+    display: none;
+    margin: 0px 20px;
+    position: absolute;
+    background: white;
+}
+#navmenu ul{
+    list-style-type: none;
+}
+#navmenu a{
+    text-decoration: none;
+    color: rgb(73, 73, 73);
+}
+#navmenu li{
+    border-bottom: solid 1px #994a96;
+
+}
+#navmenu a:hover{
+    font-weight: bold;
 }

@@ -3,9 +3,11 @@
 class Controller{
 
     private $_member;
+    private $_meetic;
 
     public function __construct(){
         $this->_member = new Member();
+        $this->_meetic = new Meetic();
     }
 
     public function redirectTo($url){
@@ -128,5 +130,17 @@ class Controller{
         $yo = $this->_member;
         $yo->deleteMember();
         $this->logout();
+    }
+
+    public function meetic(){
+        $yo = $this->_meetic;
+        $city_tab = $yo->getLoc();
+        if (isset($_POST['city']) && isset($_POST['genre']) && isset($_POST['age']) && !empty($_POST['city']) && !empty($_POST['genre']) && !empty($_POST['age'])){
+            $result = $yo->searchLoveBy3();
+        }
+        else{
+            $error_msg5 = "Merci de remplir tous les champs";
+        }
+        include("views/view_meetic.php");
     }
 }
