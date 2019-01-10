@@ -33,18 +33,18 @@
 
         <p class="m-0">Age :</p>
         <div>
-            <input type="checkbox" value="18/25" name="age" class="m-2">
+            <input type="checkbox" value="18/25" name="age[]" class="m-2">
             <label for="18/25">18-25 ans</label>
-            <input type="checkbox" value="25/35" name="age" class="m-2">
+            <input type="checkbox" value="25/35" name="age[]" class="m-2">
             <label for="25/35">25-35 ans</label><br />
-            <input type="checkbox" value="35/45" name="age" class="m-2">
+            <input type="checkbox" value="35/45" name="age[]" class="m-2">
             <label for="35/45">35-45 ans</label>
-            <input type="checkbox" value="45+" name="age" class="m-2">
+            <input type="checkbox" value="45+" name="age[]" class="m-2">
             <label for="45+">45 ans et plus</label>
         </div>
 
         <p class="m-0">Localisation :</p>
-        <select name="city" multiple size=5>
+        <select name="city[]" multiple size=5>
         <?php $city_tab = array_unique($city_tab);
         foreach($city_tab as $city):?>
         <option><?= $city?></option>
@@ -53,11 +53,11 @@
         <input type="submit" value="Rechercher">
     </form>
     </div>
-    <?php if(isset($_POST['city'])):
-    foreach($result as $res):?>
+    
+    <?php foreach($result as $res):?>
     <p><?= $res['prenom']?></p>
     <?php endforeach;
-    endif;
+    
     if(isset($error_msg5)): ?>
         <p class="alert alert-light m-3"><?= $error_msg5?><p>
     <?php endif; ?>

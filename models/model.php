@@ -96,24 +96,52 @@
            return $city_tab;
         }
 
-        public function searchLoveby3(){
-            $search = "SELECT * FROM membres WHERE ville =:ville AND sexe =:genre AND TIMESTAMPDIFF(YEAR, date_naissance, '2019-01-01')";
-            if(($_POST['age']) == "18/25"){
-                $search .= " BETWEEN 18 AND 25";
+        public function searchLove(){
+            $search = "SELECT * FROM membres WHERE 1";
+            if(isset($_POST['city']) && !empty($_POST['city'])){
+                $search .= " AND ville IN (";
+                $i = 0;
+                foreach($_POST['city'] as $city){
+                    if($i == 0){
+                        $search .= "'{$city}'";
+                    }
+                    else{
+                        $search .= ", '{$city}'";
+                    }
+                    $i++;
+                }
+                $search .= ")";
             }
-            if(($_POST['age']) === "25/35"){
-                $search .= " BETWEEN 25 AND 35";
+            if(isset($_POST['genre']) && !empty($_POST['genre'])){
+                $search .= " AND sexe ='{$_POST['genre']}'";
             }
-            if(($_POST['age']) === "35/45"){
-                $search .= " BETWEEN 35 AND 45";
+            if(isset($_POST['age']) && !empty($_POST['age'])){
+                var_dump($_POST['age']);
+                $i = 0;
+                foreach($_POST['age'] as $age){
+                    if($i == 0){
+                        $search .= " AND ((TIMESTAMPDIFF(YEAR, date_naissance, '2019-01-01')";
+                    }
+                    else{
+                        $search .= " OR (TIMESTAMPDIFF(YEAR, date_naissance, '2019-01-01')";
+                    }
+                    if($age == "18/25"){
+                        $search .= " BETWEEN 18 AND 25)";
+                    }
+                    if($age == "25/35"){
+                        $search .= " BETWEEN 25 AND 35)";
+                    }
+                    if($age == "35/45"){
+                        $search .= " BETWEEN 35 AND 45)";
+                    }
+                    if($age == "45+"){
+                        $search .= " >= 45)";
+                    }
+                    $i++;
+                }
+                $search .= ")";
             }
-            if(($_POST['age']) === "45+"){
-                $search .= " >= 45 ";
-            }
-            
             $stmt = $this->bdd->prepare($search);
-            $stmt->bindValue('ville', $_POST['city'], PDO::PARAM_STR);
-            $stmt->bindValue('genre', $_POST['genre'], PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
