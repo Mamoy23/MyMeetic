@@ -116,7 +116,6 @@
                 $search .= " AND sexe ='{$_POST['genre']}'";
             }
             if(isset($_POST['age']) && !empty($_POST['age'])){
-                var_dump($_POST['age']);
                 $i = 0;
                 foreach($_POST['age'] as $age){
                     if($i == 0){

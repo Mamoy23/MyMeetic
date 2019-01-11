@@ -82,3 +82,37 @@ h3{
 #navmenu a:hover{
     font-weight: bold;
 }
+#galerie{
+    overflow: hidden;
+    height: 200px;
+    position: relative;
+}
+#galerie ul{
+    width: 150px;
+}
+#galerie ul:hover{
+    font-weight: bold;
+}
+.suiv{
+    cursor: pointer;
+    background: url('../next.png') no-repeat; 
+    height: 50px;
+    top: 80px;
+    right: 0;
+    width: 50px;
+    position: absolute;
+}
+.prec{
+    cursor: pointer;
+    background: url('../back.png') no-repeat; 
+    height: 50px;
+    top: 80px;
+    left: 0;
+    width: 50px;
+    position: absolute;
+}
+.slider{
+    width: 5000px;
+    position: relative;
+    top: 50px;
+}

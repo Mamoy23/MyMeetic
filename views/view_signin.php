@@ -28,7 +28,7 @@
             <input type="text" name="pseudo" placeholder="Pseudo" class="input">
 
             <p class="m-0">Date de naissance :</p>
-            <div class="d-flex align-items-baseline select">
+            <div class="d-flex justify-content-center align-items-baseline select">
                 <select name="birthday" id="birthday" class="m-1 sub-select">
                     <option value="day">Jour</option>
                     <?php for($day = 1; $day <= 31; $day++) :?>

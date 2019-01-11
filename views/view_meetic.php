@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="views/main.css">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Thasadith" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body class="linear-gradient">
     <header>
@@ -20,10 +20,10 @@
             </div>
     </header>
 
-    <div class="block-background">
+    <div class="block-background m-4 rounded">
 
     <form action="?page=meetic" method="POST" class="text-center">
-        <p class="m-0">Genre :</p>
+        <h3 class="m-0">Genre :</h3>
             <input type="radio" id="man" name="genre" value="homme" class="m-2">
             <label for="man">Homme</label> 
             <input type="radio" id="woman" name="genre" value="femme" class="m-2">
@@ -31,7 +31,7 @@
             <input type="radio" id="other" name="genre" value="autre" class="m-2">
             <label for="other">Autre</label>
 
-        <p class="m-0">Age :</p>
+        <h3 class="m-0">Age :</h3>
         <div>
             <input type="checkbox" value="18/25" name="age[]" class="m-2">
             <label for="18/25">18-25 ans</label>
@@ -43,24 +43,33 @@
             <label for="45+">45 ans et plus</label>
         </div>
 
-        <p class="m-0">Localisation :</p>
-        <select name="city[]" multiple size=5>
+        <h3 class="m-0">Localisation :</h3>
+        <select name="city[]" multiple size=5 class="select sub-select">
         <?php $city_tab = array_unique($city_tab);
         foreach($city_tab as $city):?>
-        <option><?= $city?></option>
+        <option><?= ucfirst(strtolower($city))?></option>
         <?php endforeach;?>
 
-        <input type="submit" value="Rechercher">
+        <input type="submit" value="Rechercher" class="submit-button text-white border-0 font-weight-bold">
     </form>
     </div>
     
-    <?php foreach($result as $res):?>
-    <p><?= $res['prenom']?></p>
-    <?php endforeach;
     
-    if(isset($error_msg5)): ?>
-        <p class="alert alert-light m-3"><?= $error_msg5?><p>
-    <?php endif; ?>
-    <script src="controllers/hide_element.js"></script>
+    <div id="galerie" class="m-4 rounded">
+        <div class="slider d-flex">
+            <?php foreach($result as $res):?>
+            <ul class="list-unstyled border rounded border-white m-2 p-2 text-white">
+                <li><?= $res['nom']." ".$res['prenom'] ?></li>
+                <li>Surommé <?=$res['pseudo']?></li>
+                <li>Né(e) le <?=$res['date_naissance']?></li>
+            </ul>
+            <?php endforeach;?>
+        </div>
+        <div class="suiv"></div>
+        <div class="prec"></div> 
+    </div>
+    
+    <script type="text/javascript" src="controllers/hide_element.js"></script>
+    <script type="text/javascript" src="controllers/slider.js "></script>
 </body>
 </html>

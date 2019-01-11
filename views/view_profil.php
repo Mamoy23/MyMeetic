@@ -85,7 +85,7 @@
             <p class="alert alert-light m-3"><?= $error_msg4?><p>
                 <?php endif; ?>
             </div>
-            <script src="controllers/hide_element.js"></script>
-            <script src="controllers/delete_member.js"></script>
+            <script type="text/javascript" src="controllers/hide_element.js"></script>
+            <script type="text/javascript" src="controllers/delete_member.js"></script>
 </body>
 </html>
