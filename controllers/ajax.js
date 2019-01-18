@@ -1,19 +1,19 @@
 $(document).ready(function(){
-    //$('#galerie').hide();
+    $('#galerie').hide();
     
-    //$('#meetic_form').submit(function(e){
-    $(document).on("submit", "#meetic_form", function(e){
+    $('#meetic_form').submit(function(e){
+    //$(document).on("submit", "#meetic_form", function(e){
         e.preventDefault();
         $.ajax({
             url : "controllers/action_meetic.php",
             type: "post",
             data: $(this).serializeArray(),
             success: function(result){
-                $(".slider").append(result);
+                $(".slider").html(result);
                 //$(result).hide().appendTo(".slider").fadeIn(1000);
                 //$(result).appendTo(".slider").hide().fadeIn(300);
 
-               // $("#galerie").show();
+               $("#galerie").show();
             },
             error: function(jqXHR, textStatus, errorThrown){
                 alert("Erreur :"+jqXHR.status+jqXHR.responseText);
@@ -22,6 +22,7 @@ $(document).ready(function(){
                 console.log(errorThrown);
             }
         });
+        return false;
     });
 });
 

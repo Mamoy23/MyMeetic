@@ -12,11 +12,11 @@
 </head>
 <body class="linear-gradient">
     <header>
-        <img src="menu.png" id="menu" alt="menu">
+        <img src="images/menu.png" id="menu" alt="menu">
         <?php include("view_menu.html")?>
         <h1 class="text-white text-center m-2">Bienvenue <?= $infos['pseudo']?> !</h1>
             <div class="text-center">
-                <img src="heart.png" id="logo">
+                <img src="images/heart.png" id="logo">
             </div>
     </header>
         

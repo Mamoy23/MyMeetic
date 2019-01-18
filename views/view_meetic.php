@@ -12,15 +12,15 @@
 </head>
 <body class="linear-gradient">
     <header>
-    <img src="menu.png" id="menu" alt="menu">
+    <img src="images/menu.png" id="menu" alt="menu">
         <?php include("view_menu.html")?>
         <h1 class="text-white text-center m-2">Trouver l'amour !</h1>
             <div class="text-center">
-                <img src="heart.png" id="logo">
+                <img src="images/heart.png" id="logo">
             </div>
     </header>
 
-    <div class="block-background-profil m-4 rounded">
+    <div class="block-background-profil rounded d-flex justify-content-center">
 
     <form action="?page=meetic" id="meetic_form" method="POST" class="text-center">
         <h3 class="m-0 font-weight-bold">Genre :</h3>
@@ -51,21 +51,16 @@
         <?php endforeach;?>
 
         <input type="submit" value="Rechercher" class="submit-button border-0 font-weight-bold">
-        <div id="loader"><img src="ajax-loader.gif" alt="loader" /></div>
     </form>
     </div>
     
-    
-    
     <div id="galerie" class="m-4 rounded">
         <div class="slider d-flex">
-
         </div>
         <div class="suiv"></div>
         <div class="prec"></div> 
     </div>
 
-    
     <script type="text/javascript" src="controllers/hide_element.js"></script>
     <script type="text/javascript" src="controllers/slider.js "></script>
     <script type="text/javascript" src="controllers/ajax.js"></script>

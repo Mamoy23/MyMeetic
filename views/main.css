@@ -127,7 +127,7 @@ h3{
 }
 .suiv{
     cursor: pointer;
-    background: url('../next.png') no-repeat; 
+    background: url('../images/next.png') no-repeat; 
     height: 50px;
     top: 70px;
     right: 0;
@@ -136,7 +136,7 @@ h3{
 }
 .prec{
     cursor: pointer;
-    background: url('../back.png') no-repeat; 
+    background: url('../images/back.png') no-repeat; 
     height: 50px;
     top: 70px;
     left: 0;
@@ -146,10 +146,6 @@ h3{
 .slider{
     width: 5000px;
     position: relative;
-}
-
-.show{
-    display: block !important;
 }
 
 @media screen and (min-width: 425px){
@@ -184,6 +180,7 @@ h3{
     }
     .block-background-profil{
         padding: 20px;
+        margin : 10px 120px;
     }
     .block-background-profil > .submit-button{
         width: 80%;

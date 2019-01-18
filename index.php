@@ -20,7 +20,12 @@ else {
             $yo->profil();
             break;
         case "meetic":
-            $yo->meetic();
+            if(!empty($_SESSION)){
+                $yo->meetic();
+            }
+            else{
+                echo "Cet espace est réservé a nos membres! Sorry :)";
+            }
             break;
         case "logout":
             $yo->logout();
