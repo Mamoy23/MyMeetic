@@ -23,22 +23,32 @@ class Controller{
 
         if (isset($_POST['name']) && isset($_POST['firstname']) &&isset($_POST['pseudo']) && isset($_POST['birthday']) && isset($_POST['birthmonth']) && isset($_POST['birthyear']) && isset($_POST['gender']) && isset($_POST['city']) && isset($_POST['email']) && isset($_POST['password']) &&isset($_POST['verif_password'])
         && !empty($_POST['name']) && !empty($_POST['firstname']) &&!empty($_POST['pseudo']) && !empty($_POST['birthday']) && !empty($_POST['birthmonth']) && !empty($_POST['birthyear']) && !empty($_POST['gender']) && !empty($_POST['city']) && !empty($_POST['email']) && !empty($_POST['password']) &&!empty($_POST['verif_password'])){
-            if($_POST['birthyear'] <= 2001){
-                if($_POST['password'] === $_POST['verif_password']){
-                    if($this->_member->addMember() == "23000"){
-                        $error_msg = "Cette adresse mail est déjà utilisée!";
+            if(ctype_alpha(str_replace(' ', '', $_POST['name'])) && ctype_alpha(str_replace(' ', '', $_POST['firstname'])) && ctype_alpha(str_replace(' ', '', $_POST['city']))){
+                if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                    if($_POST['birthyear'] <= 2001){
+                        if($_POST['password'] === $_POST['verif_password']){
+                            if($this->_member->addMember() == "23000"){
+                                $error_msg = "Cette adresse mail est déjà utilisée!";
+                            }
+                            $co = $this->_member->coMember($_POST['email']);
+                            $_SESSION['id_membre'] = $co['id_membre'];
+                            $this->redirectTo('?page=profil');
+                        }
+                        else{
+                            $error_msg = "Les mots de passe saisis ne correspondent pas";
+                        }
                     }
-                    $co = $this->_member->coMember($_POST['email']);
-                    $_SESSION['id_membre'] = $co['id_membre'];
-                    $this->redirectTo('?page=profil');
+                    else{
+                        $error_msg = "Ce site est réservé aux majeurs";
+                    }
                 }
                 else{
-                    $error_msg = "Les mots de passe saisis ne correspondent pas";
+                    $error_msg = "Merci de saisir une adresse email correcte";
                 }
             }
             else{
-                $error_msg = "Ce site est réservé aux majeurs";
-            }
+                $error_msg = "Merci de saisir des données correctes";
+            } 
         }
         else{
             $error_msg = "Merci de remplir tous les champs";
@@ -74,13 +84,23 @@ class Controller{
         if(isset($_POST['send'])){
             if (isset($_POST['edit_name']) && isset($_POST['edit_firstname']) && isset($_POST['edit_pseudo']) && isset($_POST['edit_pseudo']) && isset($_POST['edit_birthyear']) && isset($_POST['edit_birthmonth']) && isset($_POST['edit_birthday'])&& isset($_POST['edit_city']) && isset($_POST['edit_email'])
             &&!empty($_POST['edit_name']) && !empty($_POST['edit_firstname']) && !empty($_POST['edit_pseudo']) && !empty($_POST['edit_pseudo']) && !empty($_POST['edit_birthyear']) && !empty($_POST['edit_birthmonth']) && !empty($_POST['edit_birthday']) && !empty($_POST['edit_city']) && !empty($_POST['edit_email'])){
-                if($_POST['edit_birthyear'] <= 2001){
-                    $yo = $this->_member;
-                    $yo->editInfo();
-                    $error_msg3 = "Vos modifications ont bien été enregistrées";
+                if(ctype_alpha(str_replace(' ', '', $_POST['edit_name'])) && ctype_alpha(str_replace(' ', '', $_POST['edit_firstname'])) && ctype_alpha(str_replace(' ', '', $_POST['edit_city']))){
+                    if(filter_var($_POST['edit_email'], FILTER_VALIDATE_EMAIL)){
+                        if($_POST['edit_birthyear'] <= 2001){
+                            $yo = $this->_member;
+                            $yo->editInfo();
+                            $error_msg3 = "Vos modifications ont bien été enregistrées";
+                        }
+                        else{
+                            $error_msg3 = "Les mineurs sont interdis ici!";
+                        }
+                    }
+                    else{
+                        $error_msg3 = "Merci de saisir une adresse email correcte";
+                    }
                 }
                 else{
-                    $error_msg3 = "Les mineurs sont interdis ici!";
+                    $error_msg3 = "Merci de saisir des données correctes";
                 }
             }
             else{
@@ -135,9 +155,6 @@ class Controller{
     public function meetic(){
         $yo = $this->_meetic;
         $city_tab = $yo->getLoc();
-        if (isset($_POST['city']) || isset($_POST['genre']) || isset($_POST['age']) || !empty($_POST['city']) || !empty($_POST['genre']) || !empty($_POST['age'])){
-            $result = $yo->searchLove();
-        }
         include("views/view_meetic.php");
     }
 }

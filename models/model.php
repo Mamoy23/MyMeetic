@@ -17,13 +17,13 @@
         public function addMember(){
             $add_member = "INSERT INTO membres(nom, prenom, pseudo, date_naissance, sexe, ville, email, mdp, statut) VALUES(:nom, :prenom, :pseudo, :date_naissance, :sexe, :ville, :email, :mdp, 1)";
             $stmt = $this->bdd->prepare($add_member);
-            $stmt->bindValue('nom', $_POST['name'], PDO::PARAM_STR);
-            $stmt->bindValue('prenom', $_POST['firstname'], PDO::PARAM_STR);
-            $stmt->bindValue('pseudo', $_POST['pseudo'], PDO::PARAM_STR);
+            $stmt->bindValue('nom', trim($_POST['name']), PDO::PARAM_STR);
+            $stmt->bindValue('prenom', trim($_POST['firstname']), PDO::PARAM_STR);
+            $stmt->bindValue('pseudo', trim($_POST['pseudo']), PDO::PARAM_STR);
             $stmt->bindValue('date_naissance', $_POST['birthyear']."-".$_POST['birthmonth']."-".$_POST['birthday'], PDO::PARAM_STR);
             $stmt->bindValue('sexe', $_POST['gender'], PDO::PARAM_STR);
-            $stmt->bindValue('ville', $_POST['city'], PDO::PARAM_STR);
-            $stmt->bindValue('email', $_POST['email'], PDO::PARAM_STR);
+            $stmt->bindValue('ville', trim($_POST['city']), PDO::PARAM_STR);
+            $stmt->bindValue('email', trim($_POST['email']), PDO::PARAM_STR);
             $stmt->bindValue('mdp', password_hash($_POST['password'], PASSWORD_DEFAULT), PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->errorCode();
@@ -50,12 +50,12 @@
         public function editInfo(){
             $edit_info = "UPDATE membres SET nom = :nom, prenom = :prenom, pseudo = :pseudo, date_naissance = :date, ville = :ville, email = :email WHERE id_membre = :session AND statut = 1";
             $stmt = $this->bdd->prepare($edit_info);
-            $stmt->bindValue('nom', $_POST['edit_name'], PDO::PARAM_STR);
-            $stmt->bindValue('prenom', $_POST['edit_firstname'], PDO::PARAM_STR);
-            $stmt->bindValue('pseudo', $_POST['edit_pseudo'], PDO::PARAM_STR);
+            $stmt->bindValue('nom', htmlspecialchars(trim($_POST['edit_name'])), PDO::PARAM_STR);
+            $stmt->bindValue('prenom', htmlspecialchars(trim($_POST['edit_firstname'])), PDO::PARAM_STR);
+            $stmt->bindValue('pseudo', htmlspecialchars(trim($_POST['edit_pseudo'])), PDO::PARAM_STR);
             $stmt->bindValue('date', $_POST['edit_birthyear']."-".$_POST['edit_birthmonth']."-".$_POST['edit_birthday'], PDO::PARAM_STR);
-            $stmt->bindValue('ville', $_POST['edit_city'], PDO::PARAM_STR);
-            $stmt->bindValue('email', $_POST['edit_email'], PDO::PARAM_STR );
+            $stmt->bindValue('ville', htmlspecialchars(trim($_POST['edit_city'])), PDO::PARAM_STR);
+            $stmt->bindValue('email', htmlspecialchars(trim($_POST['edit_email'])), PDO::PARAM_STR );
             $stmt->bindValue('session', $_SESSION['id_membre'], PDO::PARAM_STR);
             $stmt->execute();
         }

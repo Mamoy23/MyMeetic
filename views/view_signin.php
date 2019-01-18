@@ -12,12 +12,12 @@
 
 <body class="linear-gradient">
     <header>
-        <h1 class="text-white text-center m-2">TrueLove</h1>
         <div class="text-center">
             <img src="heart.png" id="logo">
         </div>
+        <h1 class="text-white text-center m-2">TrueLove</h1>
     </header>
-
+    <div class="container">
     <div class="m-4 rounded block-background">
         <h2 class="text-center">Rejoignez nous, c'est gratuit !</h2>
 
@@ -53,7 +53,7 @@
             </div>
 
             <p class="m-0">Genre :</p>
-            <div class="d-flex align-items-baseline select">
+            <div class="d-flex justify-content-center align-items-baseline select">
                 <input type="radio" id="man" name="gender" value="homme" class="m-2">
                 <label for="man">Homme</label> 
                 <input type="radio" id="woman" name="gender" value="femme" class="m-2">
@@ -73,12 +73,12 @@
             <p class="alert alert-light m-3"><?= $error_msg?><p>
             <?php endif; ?>
 
-            <button type="submit" class="submit-button text-white border-0 font-weight-bold">Valider</button>
+            <button type="submit" class="submit-button border-0 font-weight-bold">Valider</button>
         </form>
     </div>
 
     <div class="m-4 rounded block-background">
-        <h2 class="text-center">Content de vous revoir !</h2>
+        <h2 class="text-center">Déjà membre ?</h2>
 
        <form action="?page=login" method="POST" class="text-center">
             <input type="email" name="co_email" placeholder="Email" class="input">
@@ -86,8 +86,9 @@
             <?php if(isset($error_msg2)): ?>
             <p class="alert alert-light m-3"><?= $error_msg2?></p>
             <?php endif; ?>
-            <button type="submit" class="submit-button text-white border-0 font-weight-bold">Se connecter</button>
+            <button type="submit" class="submit-button border-0 font-weight-bold">Se connecter</button>
        </form>
+    </div>
     </div>
 
     <footer>

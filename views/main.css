@@ -1,17 +1,23 @@
 body{
     font-family: 'Thasadith', sans-serif;
-    color: rgb(73, 73, 73);
+    color: white;
 }
 .linear-gradient{
-    background: linear-gradient(to bottom, #994a96, #e74f64, #f07e37);
+    background: linear-gradient(to bottom, #994a96, #e74f64, #f07e37) no-repeat;
 }
 #logo, #menu{
     width: 40px;
-    margin: 0px 10px;
+    margin: 15px;
+    cursor: pointer;
 }
 .block-background{
-    background-color: rgba(255, 255, 255, 0.801);
-    padding: 5px 20px;
+    padding: 5px;
+}
+.block-background-profil{
+    background: #f8f9fa1a;
+    border-radius: 10px;
+    color:white;
+    padding: 10px;
 }
 h1{
     font-family: 'Dancing Script', cursive;
@@ -24,40 +30,60 @@ h2{
 h3{
     font-size: 20px;
 }
+.container{
+    padding: 0;
+    justify-content: center;
+}
 .submit-button{
+    color: #e74f64;
     border-radius: 30px;
     padding: 8px 25px;
     margin: 10px 0px;
-    background: linear-gradient(to right, #994a96, #e74f64, #f07e37);
+    background: white;
     width: 100%;
 }
 .select{
     margin: 5px 20px;
 }
 .sub-select{
-    border: none;
-    border-radius: 5px;
-    padding: 2px 5px;
-    background-color: rgba(255, 255, 255, 0.664);
+    border: solid 1px #f8f9fa61;
+    background: #f8f9fa1a;
+    border-radius: 50px;
+    padding: 5px;
+    color: white;
 }
-.sub-select:focus{
+.select-loc{
+    background: #f8f9fa1a;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+.sub-select > option{
+    color: grey;
+}
+.sub-select:focus, .select-loc{
     outline: none;
 }
 .input{
-    border: none;
-    border-bottom: solid 1px #994a96;
-    background: transparent;
+    color: white;
+    border: solid 1px #f8f9fa61;
+    border-radius: 50px;
+    background: #f8f9fa1a;
     margin-bottom: 10px;
+    padding: 8px;
     width: 100%;
 }
 .input:focus{
     outline: none;
 }
 ::placeholder{
-    color: rgb(59, 59, 59);
+    color: white;
+    padding: 8px;
 }
 #update_form, #update_id_form{
     display: none;
+    padding: 10px;
 }
 #menu{
     margin: 10px 20px;
@@ -77,27 +103,33 @@ h3{
 }
 #navmenu li{
     border-bottom: solid 1px #994a96;
-
 }
 #navmenu a:hover{
     font-weight: bold;
+}
+#loader{
+    display: none;
 }
 #galerie{
     overflow: hidden;
     height: 200px;
     position: relative;
+    color: white;
 }
 #galerie ul{
     width: 150px;
+    background: #f8f9fa1a;
+    border: solid 1px #f8f9fa61;
 }
 #galerie ul:hover{
-    font-weight: bold;
+    background-color: white;
+    color: #e74f64;
 }
 .suiv{
     cursor: pointer;
     background: url('../next.png') no-repeat; 
     height: 50px;
-    top: 80px;
+    top: 70px;
     right: 0;
     width: 50px;
     position: absolute;
@@ -106,7 +138,7 @@ h3{
     cursor: pointer;
     background: url('../back.png') no-repeat; 
     height: 50px;
-    top: 80px;
+    top: 70px;
     left: 0;
     width: 50px;
     position: absolute;
@@ -114,5 +146,46 @@ h3{
 .slider{
     width: 5000px;
     position: relative;
-    top: 50px;
+}
+
+.show{
+    display: block !important;
+}
+
+@media screen and (min-width: 425px){
+    #logo{
+        width: 50px;
+    }
+    .input{
+        font-size: 17px;
+        width: 80%;
+    }
+    p, label{
+        font-size: 18px;
+    }
+    .submit-button{
+        width: 80%;
+    }
+}
+@media screen and (min-width: 1024px){
+    .container{
+        display: flex;
+    }
+    .input{
+        font-size: 19px;
+        width: 100%;
+    }
+    .submit-button{
+        width: 100%;
+        font-size: 18px;
+    }
+    .alert{
+        height: 50%;
+    }
+    .block-background-profil{
+        padding: 20px;
+    }
+    .block-background-profil > .submit-button{
+        width: 80%;
+    }
 }

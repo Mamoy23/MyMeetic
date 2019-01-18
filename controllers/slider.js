@@ -1,7 +1,6 @@
 $(document).ready(function(){
     s = new slider("#galerie"); 
 });
-
 var slider = function(id){
     self=this;
     this.div = $(id);
@@ -23,12 +22,12 @@ var slider = function(id){
     this.courant = 0;
 
     this.suiv.click(function(){
-        if(self.courant<=self.nbEtapes){
+        //if(self.courant<=self.nbEtapes){
             self.courant++; 
             self.slider.animate({
                 left:-self.courant*self.saut
             }, 1000);
-        }
+        //}
     });
 
     this.prec.click(function(){

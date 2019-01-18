@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,10 +20,10 @@
             </div>
     </header>
 
-    <div class="block-background m-4 rounded">
+    <div class="block-background-profil m-4 rounded">
 
-    <form action="?page=meetic" method="POST" class="text-center">
-        <h3 class="m-0">Genre :</h3>
+    <form action="?page=meetic" id="meetic_form" method="POST" class="text-center">
+        <h3 class="m-0 font-weight-bold">Genre :</h3>
             <input type="radio" id="man" name="genre" value="homme" class="m-2">
             <label for="man">Homme</label> 
             <input type="radio" id="woman" name="genre" value="femme" class="m-2">
@@ -31,45 +31,43 @@
             <input type="radio" id="other" name="genre" value="autre" class="m-2">
             <label for="other">Autre</label>
 
-        <h3 class="m-0">Age :</h3>
+        <h3 class="m-0 font-weight-bold">Age :</h3>
         <div>
-            <input type="checkbox" value="18/25" name="age[]" class="m-2">
+            <input type="checkbox" id="18/25" value="18/25" name="age[]" class="m-2">
             <label for="18/25">18-25 ans</label>
-            <input type="checkbox" value="25/35" name="age[]" class="m-2">
+            <input type="checkbox" id="25/35" value="25/35" name="age[]" class="m-2">
             <label for="25/35">25-35 ans</label><br />
-            <input type="checkbox" value="35/45" name="age[]" class="m-2">
+            <input type="checkbox" id="35/45" value="35/45" name="age[]" class="m-2">
             <label for="35/45">35-45 ans</label>
-            <input type="checkbox" value="45+" name="age[]" class="m-2">
+            <input type="checkbox" id="45+" value="45+" name="age[]" class="m-2">
             <label for="45+">45 ans et plus</label>
         </div>
 
-        <h3 class="m-0">Localisation :</h3>
-        <select name="city[]" multiple size=5 class="select sub-select">
+        <h3 class="m-0 font-weight-bold">Localisation :</h3>
+        <select name="city[]" multiple size=5 class="select-loc">
         <?php $city_tab = array_unique($city_tab);
         foreach($city_tab as $city):?>
-        <option><?= ucfirst(strtolower($city))?></option>
+        <option value="<?=$city?>"><?= ucfirst(strtolower($city))?></option>
         <?php endforeach;?>
 
-        <input type="submit" value="Rechercher" class="submit-button text-white border-0 font-weight-bold">
+        <input type="submit" value="Rechercher" class="submit-button border-0 font-weight-bold">
+        <div id="loader"><img src="ajax-loader.gif" alt="loader" /></div>
     </form>
     </div>
     
     
+    
     <div id="galerie" class="m-4 rounded">
         <div class="slider d-flex">
-            <?php foreach($result as $res):?>
-            <ul class="list-unstyled border rounded border-white m-2 p-2 text-white">
-                <li><?= $res['nom']." ".$res['prenom'] ?></li>
-                <li>Surommé <?=$res['pseudo']?></li>
-                <li>Né(e) le <?=$res['date_naissance']?></li>
-            </ul>
-            <?php endforeach;?>
+
         </div>
         <div class="suiv"></div>
         <div class="prec"></div> 
     </div>
+
     
     <script type="text/javascript" src="controllers/hide_element.js"></script>
     <script type="text/javascript" src="controllers/slider.js "></script>
+    <script type="text/javascript" src="controllers/ajax.js"></script>
 </body>
 </html>
