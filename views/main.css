@@ -112,7 +112,7 @@ h3{
 }
 #galerie{
     overflow: hidden;
-    height: 200px;
+    height: 500px;
     position: relative;
     color: white;
 }
@@ -125,11 +125,14 @@ h3{
     background-color: white;
     color: #e74f64;
 }
+#galerie li{
+    font-size: 17px;
+}
 .suiv{
     cursor: pointer;
     background: url('../images/next.png') no-repeat; 
     height: 50px;
-    top: 70px;
+    top: 100px;
     right: 0;
     width: 50px;
     position: absolute;
@@ -138,7 +141,7 @@ h3{
     cursor: pointer;
     background: url('../images/back.png') no-repeat; 
     height: 50px;
-    top: 70px;
+    top: 100px;
     left: 0;
     width: 50px;
     position: absolute;

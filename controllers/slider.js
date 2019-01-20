@@ -1,9 +1,10 @@
 $(document).ready(function(){
     s = new slider("#galerie"); 
 });
-var slider = function(id){
+var slider = function(id){ 
     self=this;
     this.div = $(id);
+    console.log(this.div.html());
     this.slider = this.div.find(".slider");
     this.largeurCache = this.div.width();
     this.largeur = 0; 
@@ -14,12 +15,13 @@ var slider = function(id){
         self.largeur +=parseInt($(this).css("margin-left"));
         self.largeur +=parseInt($(this).css("margin-right"));
     });
-
+    console.log(self.largeur);
     this.prec= this.div.find(".prec");
     this.suiv= this.div.find(".suiv");
     this.saut = this.largeurCache/2;
     this.nbEtapes = Math.ceil(this.largeur/this.saut - this.largeurCache/this.saut);
     this.courant = 0;
+    console.log(this.nbEtapes);
 
     this.suiv.click(function(){
         //if(self.courant<=self.nbEtapes){

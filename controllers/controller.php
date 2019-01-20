@@ -87,9 +87,9 @@ class Controller{
                 if(ctype_alpha(str_replace(' ', '', $_POST['edit_name'])) && ctype_alpha(str_replace(' ', '', $_POST['edit_firstname'])) && ctype_alpha(str_replace(' ', '', $_POST['edit_city']))){
                     if(filter_var($_POST['edit_email'], FILTER_VALIDATE_EMAIL)){
                         if($_POST['edit_birthyear'] <= 2001){
-                            $yo = $this->_member;
-                            $yo->editInfo();
-                            $error_msg3 = "Vos modifications ont bien été enregistrées";
+                            if($this->_member->editInfo() == "23000"){
+                                $error_msg3 = "Cette adresse mail est déjà utilisée!";
+                            }
                         }
                         else{
                             $error_msg3 = "Les mineurs sont interdis ici!";
@@ -156,5 +156,9 @@ class Controller{
         $yo = $this->_meetic;
         $city_tab = $yo->getLoc();
         include("views/view_meetic.php");
+    }
+
+    public function tchat(){
+        include("views/view_msg.php");
     }
 }

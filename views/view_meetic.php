@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="views/main.css">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Thasadith" rel="stylesheet">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body class="linear-gradient">
     <header>
-    <img src="images/menu.png" id="menu" alt="menu">
+        <img src="images/menu.png" id="menu" alt="menu">
         <?php include("view_menu.html")?>
         <h1 class="text-white text-center m-2">Trouver l'amour !</h1>
             <div class="text-center">
-                <img src="images/heart.png" id="logo">
+                <img src="images/heart.png" id="logo" alt="heart">
             </div>
     </header>
 
@@ -45,11 +45,11 @@
 
         <h3 class="m-0 font-weight-bold">Localisation :</h3>
         <select name="city[]" multiple size=5 class="select-loc">
-        <?php $city_tab = array_unique($city_tab);
-        foreach($city_tab as $city):?>
-        <option value="<?=$city?>"><?= ucfirst(strtolower($city))?></option>
-        <?php endforeach;?>
-
+            <?php $city_tab = array_unique($city_tab);
+            foreach($city_tab as $city):?>
+            <option value="<?=$city?>"><?= ucfirst(strtolower($city))?></option>
+            <?php endforeach;?>
+        </select>
         <input type="submit" value="Rechercher" class="submit-button border-0 font-weight-bold">
     </form>
     </div>
@@ -61,8 +61,8 @@
         <div class="prec"></div> 
     </div>
 
-    <script type="text/javascript" src="controllers/hide_element.js"></script>
-    <script type="text/javascript" src="controllers/slider.js "></script>
-    <script type="text/javascript" src="controllers/ajax.js"></script>
+    <script src="controllers/hide_element.js"></script>
+    <script src="controllers/slider.js "></script>
+    <script src="controllers/ajax.js"></script>
 </body>
 </html>

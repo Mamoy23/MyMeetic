@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,8 +70,8 @@
                 
                 <button type="submit" class="submit-button border-0 font-weight-bold">Sauvegarder</button>
             </form>
-        <?php if(isset($error_msg3)): ?>
-        <p class="alert alert-light m-3"><?= $error_msg3?><p>
+            <?php if(isset($error_msg3)): ?>
+                <p class="alert alert-light m-3"><?=$error_msg3?><p>
             <?php endif; ?>
             
             <form action="?page=profil" method="POST" id="update_id_form" class="text-center m-2">

@@ -24,7 +24,7 @@ else {
                 $yo->meetic();
             }
             else{
-                echo "Cet espace est réservé a nos membres! Sorry :)";
+                echo "Cet espace est réservé à nos membres! Sorry :)";
             }
             break;
         case "logout":
@@ -32,6 +32,9 @@ else {
             break;
         case "delete":
             $yo->deleteMember();
+            break;
+        case "tchat":
+            $yo->tchat();
             break;
     }
 }
